@@ -1,7 +1,7 @@
 # vue的基础脚手架
 
 目前
-vue2 + vuecli3.0 + vuex + jquery + webpack + ts
+vue2 + vuecli3.0 + vuex + jquery + webpack + ts + element-ui
 
 编译
 
