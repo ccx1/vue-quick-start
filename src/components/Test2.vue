@@ -1,12 +1,12 @@
 <template>
-    <div class="home">
+    <div class="test">
         <h1>This is an about page</h1>
         <div>{{this.count}}</div>
         <button @click="renderCount">+</button>
         <button @click="getCount">get</button>
     </div>
 </template>
-<script>
+<script lang="js">
     export default {
         data() {
             return {

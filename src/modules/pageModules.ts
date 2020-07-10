@@ -1,19 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import {Module} from "vuex";
+interface pageInfo {
+    count:number;
+    aaa:string;
+}
 
-Vue.use(Vuex)
-export default new Vuex.Store({
+const pageModules:Module<pageInfo,any> = {
     // 数据集合
     state: {
-        homeData:{
-            count:0
-        }
+        count:0,
+        aaa:'dfads'
     },
     // 存储数据的地方
     mutations: {
         changValue(state,newVal){
             console.log('存')
-            state.homeData.count = newVal;
+            state.count = newVal;
         }
     },
     // 动作发射，这里其实是数据塞。所以用commit就行。相当于对象观察者
@@ -22,7 +23,5 @@ export default new Vuex.Store({
             context.commit('changValue',payload);
         }
     },
-    // 可以通过模块化，将上面几个数据进来
-    modules: {
-    }
-})
+}
+export default pageModules;

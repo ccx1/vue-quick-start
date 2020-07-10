@@ -2,9 +2,11 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const HappyPack = require('happypack');
+const os = require('os');
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 module.exports = {
-    entry:  path.join(__dirname, 'src/main.js'),
+    entry:  path.join(__dirname, 'src/main.ts'),
     mode: "development",
     devtool: 'inline-source-map',
     context: __dirname,
@@ -18,12 +20,29 @@ module.exports = {
             {
                 test:  /\.vue$/,
                 loader: 'vue-loader',
-
+                options: {
+                    loaders: {
+                        ts: "ts-loader",
+                        tsx: "babel-loader!ts-loader"
+                    }
+                }
+            },
+            {
+                test: /\.ts[x]?$/,
+                exclude: /node_modules/,
+                use: ['happypack/loader?id=unHappy','babel-loader', {
+                    loader: "ts-loader",
+                    options: { appendTsxSuffixTo: [/\.vue$/] }
+                }],
+            }, {
+                test: /\.js[x]?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader?cacheDirectory',
             },
             {
                 test: /\.css$/,
                 use: [
-                    'vue-style-loader',
+                    'style-loader',
                     'css-loader'
                 ]
             },
@@ -66,10 +85,11 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: [ '.js', '.vue'],
+        extensions: [ '.tsx','.ts','.js', '.vue'],
         modules: [path.resolve(__dirname, 'node_modules')],
         alias: {
-            '@': path.resolve(__dirname, 'src')
+            '@': path.resolve(__dirname, 'src'),
+            'vue': 'vue/dist/vue.js'
         }
     },
     plugins:[
@@ -80,6 +100,14 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery'
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HappyPack({
+            id: 'unHappy',
+            loaders: [{
+                loader: 'babel-loader?cacheDirectory=true'
+            }],
+            threadPool: happyThreadPool,
+            verbose: true
+        })
     ]
 };
