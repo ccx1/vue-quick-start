@@ -1,0 +1,43 @@
+{
+  "name": "vue-test2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "start": "webpack-dev-server  --hot --inline --colors --content-base --config webpack.config.js"
+  },
+  "dependencies": {
+    "babel-loader": "^8.1.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jquery": "^3.5.1",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "vue": "^2.6.11",
+    "vue-loader-plugin": "^1.3.0",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.5.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^3.6.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
