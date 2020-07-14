@@ -32,6 +32,10 @@ module.exports = {
                 use: ['style-loader','css-loader', 'sass-loader']
             },
             {
+                test: /\.woff?$|\.woff2?$|\.svg?$|\.ttf?$|\.eot?$/,
+                loader: 'url-loader'
+            },
+            {
                 test: /\.(jpg|jpeg|bmp|png|webp|gif)$/,
                 loader: 'url-loader',
                 options: {

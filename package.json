@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "babel-loader": "^8.1.0",
+    "core-js": "2.6.9",
+    "element-ui": "^2.13.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jquery": "^3.5.1",
